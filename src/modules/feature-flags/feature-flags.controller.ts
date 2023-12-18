@@ -13,7 +13,7 @@ import { FeatureFlagsService } from './feature-flags.service';
 import { CreateFeatureFlagDto } from './dto/create-feature-flag.dto';
 import { UpdateFeatureFlagDto } from './dto/update-feature-flag.dto';
 
-@Controller('feature-flags')
+@Controller('api/feature-flags')
 export class FeatureFlagsController {
   constructor(private readonly featureFlagsService: FeatureFlagsService) {}
 

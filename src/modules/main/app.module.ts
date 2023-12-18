@@ -12,8 +12,8 @@ import { LayoutModule } from '../layout/layout.module';
       autoLoadEntities: true,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
     }),
-    LayoutModule,
     FeatureFlagsModule,
+    LayoutModule,
   ],
 })
 export class AppModule {}
