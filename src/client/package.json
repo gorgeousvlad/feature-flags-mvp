@@ -27,7 +27,9 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@gravity-ui/icons": "^2.8.1",
     "@gravity-ui/uikit": "^5.25.0",
+    "axios": "^1.6.2",
     "react-dom": "^18.2.0",
     "react-router-dom": "^5.3.4"
   }

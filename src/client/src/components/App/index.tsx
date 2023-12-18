@@ -9,8 +9,8 @@ import '@gravity-ui/uikit/styles/styles.css';
 export function App() {
     return (
         <Router>
-            <Route path='/' component={List} />
-            <Route path='/:id' component={Item} />
+            <Route path='/' component={List} exact />
+            <Route path='/:id' component={Item} exact />
         </Router>
     );
 }

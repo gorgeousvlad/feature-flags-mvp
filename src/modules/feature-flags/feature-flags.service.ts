@@ -27,7 +27,7 @@ export class FeatureFlagsService {
 
   async findOne(id: number) {
     const result = await this.featureFlagRepository.findOneBy({ id });
-    console.log('__RESULT', result);
+
     return result;
   }
 
