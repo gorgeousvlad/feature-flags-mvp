@@ -2,16 +2,16 @@
 const path = require('path');
 
 const autoprefixer = require('autoprefixer');
-const TerserPlugin = require('terser-webpack-plugin');
 
 const SRC_PATH = path.resolve('src');
+const NODE_MODULES_PATH = path.resolve('node_modules');
 
 module.exports = {
   entry: {
     index: path.resolve('.', 'src/index.tsx'),
   },
   output: {
-    path: path.resolve('.', 'dist'),
+    path: path.resolve('.', 'dist/public'),
     filename: 'bundle.js',
   },
   mode: 'production',
@@ -47,18 +47,5 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
-  },
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        extractComments: false,
-        terserOptions: {
-          format: {
-            comments: false,
-          },
-        },
-      }),
-    ],
-  },
+  }
 };

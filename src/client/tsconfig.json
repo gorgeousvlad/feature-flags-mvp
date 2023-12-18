@@ -1,0 +1,18 @@
+{
+  "extends": "@gravity-ui/tsconfig/tsconfig",
+  "include": [
+    "."
+  ],
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "module": "esnext",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
