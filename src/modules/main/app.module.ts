@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { FeatureFlagsModule } from '../feature-flags/feature-flags.module';
+import { LayoutModule } from '../layout/layout.module';
 
 @Module({
   imports: [
@@ -13,9 +12,8 @@ import { FeatureFlagsModule } from '../feature-flags/feature-flags.module';
       autoLoadEntities: true,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
     }),
+    LayoutModule,
     FeatureFlagsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
