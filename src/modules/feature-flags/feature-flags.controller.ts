@@ -6,6 +6,8 @@ import {
   Patch,
   Param,
   Delete,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { FeatureFlagsService } from './feature-flags.service';
 import { CreateFeatureFlagDto } from './dto/create-feature-flag.dto';
@@ -26,8 +28,14 @@ export class FeatureFlagsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.featureFlagsService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    const result = await this.featureFlagsService.findOne(+id);
+
+    if (!result) {
+      throw new HttpException('Not found', HttpStatus.NOT_FOUND);
+    }
+
+    return result;
   }
 
   @Patch(':id')
