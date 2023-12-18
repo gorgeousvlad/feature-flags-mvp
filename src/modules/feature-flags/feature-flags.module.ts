@@ -6,7 +6,15 @@ import { FeatureFlag } from '../../entities/feature-flag.entity';
 import { FeatureFlagRepository } from 'src/repositories/feature-flag.repository';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([FeatureFlag])],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: 'db',
+      synchronize: true,
+      autoLoadEntities: true,
+    }),
+    TypeOrmModule.forFeature([FeatureFlag]),
+  ],
   controllers: [FeatureFlagsController],
   providers: [FeatureFlagRepository, FeatureFlagsService],
 })
