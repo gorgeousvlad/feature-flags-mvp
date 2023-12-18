@@ -19,6 +19,6 @@
     "noFallthroughCasesInSwitch": false
   },
   "exclude": [
-    "src/client"
+    "client"
   ]
 }

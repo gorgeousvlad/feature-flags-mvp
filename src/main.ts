@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import { AppModule } from './modules/main/app.module';
 
 // TODO: move to configs
-const PUBLIC_PATH = resolve('.', 'src/client/dist/public');
+const PUBLIC_PATH = resolve('.', 'client/dist/public');
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
