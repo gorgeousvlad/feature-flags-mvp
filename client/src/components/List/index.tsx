@@ -1,15 +1,14 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import { Button, MenuItemProps, Spin, TableDataItem, Table as TableRaw, withTableActions, Icon, Modal } from '@gravity-ui/uikit';
 import CirclePlus from '@gravity-ui/icons/CirclePlus';
-import { FeatrueFlag } from '../../models';
-import { useHistory } from 'react-router-dom';
 
+import { FeatrueFlag } from '../../models';
 import { Form } from '../Form';
+import { API_ENDPOINT } from '../../constants';
 
 import './List.scss';
-
-const API_ENDPOINT = '/api/feature-flags';
 
 const Table = withTableActions(TableRaw);
 const tableMeta = [
