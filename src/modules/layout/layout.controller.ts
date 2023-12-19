@@ -1,11 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
 import { LayoutService } from './layout.service';
 
-@Controller()
+@Controller('/')
 export class LayoutController {
   constructor(private readonly appService: LayoutService) {}
 
-  @Get()
+  @Get('*')
   getLayout(): string {
     return this.appService.getLayout();
   }

@@ -6,7 +6,7 @@ const renderLayout = createRenderFunction();
 export class LayoutService {
   getLayout(): string {
     return renderLayout({
-      title: 'Home page',
+      title: 'Fature flags',
       scripts: [{ src: '/public/bundle.js', async: true }],
     });
   }
