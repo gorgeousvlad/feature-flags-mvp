@@ -5,8 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "dev": "webpack --watch --config webpack.config.js",
-    "test": "npm run test"
+    "dev": "webpack --watch --config webpack.config.js"
   },
   "author": "",
   "license": "ISC",

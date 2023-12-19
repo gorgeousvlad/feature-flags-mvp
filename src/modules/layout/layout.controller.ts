@@ -3,10 +3,10 @@ import { LayoutService } from './layout.service';
 
 @Controller('/')
 export class LayoutController {
-  constructor(private readonly appService: LayoutService) {}
+  constructor(private readonly layoutService: LayoutService) {}
 
   @Get('*')
   getLayout(): string {
-    return this.appService.getLayout();
+    return this.layoutService.getLayout();
   }
 }

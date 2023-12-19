@@ -4,7 +4,7 @@ import { LayoutService } from './layout.service';
 
 @Module({
   imports: [],
-  controllers: [LayoutController],
   providers: [LayoutService],
+  controllers: [LayoutController],
 })
 export class LayoutModule {}

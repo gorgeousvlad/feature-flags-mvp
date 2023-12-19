@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateFeatureFlagDto } from './dto/create-feature-flag.dto';
 import { UpdateFeatureFlagDto } from './dto/update-feature-flag.dto';
-import { FeatureFlagRepository } from 'src/repositories/feature-flag.repository';
+import { FeatureFlagRepository } from '../../repositories/feature-flag.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()

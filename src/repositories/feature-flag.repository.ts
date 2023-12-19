@@ -1,8 +1,8 @@
 import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
-import { FeatureFlag } from 'src/entities/feature-flag.entity';
+import { UpdateFeatureFlagDto } from '../modules/feature-flags/dto/update-feature-flag.dto';
+import { FeatureFlag } from '../entities/feature-flag.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UpdateFeatureFlagDto } from 'src/modules/feature-flags/dto/update-feature-flag.dto';
 
 @Injectable()
 export class FeatureFlagRepository extends Repository<FeatureFlag> {
