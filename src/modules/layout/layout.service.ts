@@ -7,7 +7,7 @@ export class LayoutService {
   getLayout(): string {
     return renderLayout({
       title: 'Home page',
-      scripts: [{ src: '/bundle.js', async: true }],
+      scripts: [{ src: '/public/bundle.js', async: true }],
     });
   }
 }

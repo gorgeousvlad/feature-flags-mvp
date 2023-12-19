@@ -3,6 +3,6 @@ import { FeatureFlagsModule } from '../feature-flags/feature-flags.module';
 import { LayoutModule } from '../layout/layout.module';
 
 @Module({
-  imports: [LayoutModule, FeatureFlagsModule],
+  imports: [FeatureFlagsModule, LayoutModule],
 })
 export class AppModule {}
