@@ -7,6 +7,7 @@ import { FeatureFlagRepository } from 'src/repositories/feature-flag.repository'
 import { Service } from 'src/entities/service.entity';
 import { FeatureFlagLog } from 'src/entities/feature-flag-log.entity';
 import { ServicesModule } from './services/services/services.module';
+import { dbConfig } from './data-source';
 
 @Module({
   imports: [
@@ -14,12 +15,7 @@ import { ServicesModule } from './services/services/services.module';
       // for quick local test with sqlite use this:
       // type: 'sqlite',
       // database: 'db',
-      type: 'postgres',
-      host: '127.0.0.1',
-      port: 5432,
-      username: 'postgres',
-      password: 'mysecretpassword',
-      database: 'postgres',
+      ...dbConfig,
       synchronize: true,
       autoLoadEntities: true,
     }),
