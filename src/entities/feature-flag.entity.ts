@@ -14,11 +14,13 @@ export class FeatureFlag extends BaseEntity {
   @Column({ nullable: true })
   deleted: boolean;
 
+  // auto eager example
   // @ManyToMany((type) => Service, (service) => service.flags, { eager: true })
   @ManyToMany((type) => Service, (service) => service.featureFlags, {
     cascade: true,
   })
   @JoinTable({
+    //non-required settings
     name: 'feature_flags_services',
     joinColumn: { name: 'featureFlagId', referencedColumnName: 'id' },
     inverseJoinColumn: { name: 'serviceId' },
