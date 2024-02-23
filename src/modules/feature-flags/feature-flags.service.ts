@@ -9,9 +9,11 @@ import { Service } from 'src/entities/service.entity';
 
 export interface FindAllFilters {
   services?: string[];
+  take?: number;
+  skip?: number;
 }
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 5;
 
 @Injectable()
 export class FeatureFlagsService {
@@ -43,8 +45,8 @@ export class FeatureFlagsService {
     });
   }
 
-  findAll(filters: FindAllFilters = {}) {
-    const { services } = filters;
+  async findAll(filters: FindAllFilters = {}) {
+    const { services, take = PAGE_SIZE, skip = 0 } = filters;
     let where = {};
 
     if (services) {
@@ -55,19 +57,24 @@ export class FeatureFlagsService {
       };
     }
 
-    return this.featureFlagRepository.find({
+    const [list, count] = await this.featureFlagRepository.findAndCount({
+      take,
+      skip,
       select: {
         id: true,
         name: true,
         value: true,
       },
-      take: PAGE_SIZE,
       relations: {
         services: true,
       },
       where,
     });
 
+    return {
+      list,
+      count,
+    };
     //Query Builder Example
   }
 

@@ -4,13 +4,12 @@ import { useHistory } from 'react-router-dom';
 import { Button, MenuItemProps, Spin, TableDataItem, Table as TableRaw, withTableActions, Icon, Modal } from '@gravity-ui/uikit';
 import CirclePlus from '@gravity-ui/icons/CirclePlus';
 
-import { FeatrueFlag, Service } from '../../models';
+import { FeatrueFlag } from '../../models';
 import { Form } from '../Form';
 import { API_ENDPOINT } from '../../constants';
 
 import './List.scss';
 import { ServicesSelect } from '../ServicesSelect/ServicesSelect';
-import { useServices } from '../../hooks/useServices';
 
 const Table = withTableActions(TableRaw);
 const tableMeta = [
@@ -29,7 +28,7 @@ export function List() {
     const fetchData = useCallback(async () => {
         setLoading(true)
         const { data } = await axios.get(API_ENDPOINT, {params: {services}})
-        setData(data)
+        setData(data.list)
         setLoading(false);
     }, [services]);
 

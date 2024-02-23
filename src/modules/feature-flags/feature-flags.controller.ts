@@ -24,8 +24,12 @@ export class FeatureFlagsController {
   }
 
   @Get()
-  findAll(@Query('services') services) {
-    return this.featureFlagsService.findAll({ services });
+  findAll(
+    @Query('services') services: string[] | undefined,
+    @Query('take') take: number | undefined,
+    @Query('skip') skip: number | undefined,
+  ) {
+    return this.featureFlagsService.findAll({ services, take, skip });
   }
 
   @Get(':id')
