@@ -8,6 +8,7 @@ import {
   Delete,
   HttpException,
   HttpStatus,
+  Query,
 } from '@nestjs/common';
 import { FeatureFlagsService } from './feature-flags.service';
 import { CreateFeatureFlagDto } from './dto/create-feature-flag.dto';
@@ -23,8 +24,8 @@ export class FeatureFlagsController {
   }
 
   @Get()
-  findAll() {
-    return this.featureFlagsService.findAll();
+  findAll(@Query('services') services) {
+    return this.featureFlagsService.findAll({ services });
   }
 
   @Get(':id')

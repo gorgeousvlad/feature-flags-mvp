@@ -9,7 +9,6 @@ export class LayoutController {
 
   @Get('*')
   getLayout(): string {
-    console.log('getLayout');
     return this.layoutService.getLayout();
   }
 }

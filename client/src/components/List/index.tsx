@@ -1,14 +1,16 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { Button, MenuItemProps, Spin, TableDataItem, Table as TableRaw, withTableActions, Icon, Modal } from '@gravity-ui/uikit';
 import CirclePlus from '@gravity-ui/icons/CirclePlus';
 
-import { FeatrueFlag } from '../../models';
+import { FeatrueFlag, Service } from '../../models';
 import { Form } from '../Form';
 import { API_ENDPOINT } from '../../constants';
 
 import './List.scss';
+import { ServicesSelect } from '../ServicesSelect/ServicesSelect';
+import { useServices } from '../../hooks/useServices';
 
 const Table = withTableActions(TableRaw);
 const tableMeta = [
@@ -21,14 +23,15 @@ export function List() {
     const [data, setData] = useState<FeatrueFlag[]>([]);
     const [loading, setLoading] = useState(false);
     const [modalData, setModalData] = useState<{ id?: number } | null>(null);
+    const [services, setServices] = useState<string[]>([]);
     const history = useHistory();
 
     const fetchData = useCallback(async () => {
         setLoading(true)
-        const { data } = await axios.get(API_ENDPOINT)
+        const { data } = await axios.get(API_ENDPOINT, {params: {services}})
         setData(data)
         setLoading(false);
-    }, []);
+    }, [services]);
 
     const onSubmit = async (data: Partial<FeatrueFlag>) => {
         const params = data.id
@@ -64,7 +67,7 @@ export function List() {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [fetchData, services]);
 
     return (
         <div className='list'>
@@ -77,6 +80,7 @@ export function List() {
                 />}
             </Modal>
             <h2>Feature flags</h2>
+            <ServicesSelect onUpdate={setServices} selected={services}/>
             {loading ?
                 (
                     <Spin size='xl' />
