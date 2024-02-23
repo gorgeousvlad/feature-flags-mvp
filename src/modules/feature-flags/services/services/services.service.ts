@@ -13,11 +13,16 @@ export class ServicesService {
   ) {}
 
   create(createServiceDto: CreateServiceDto) {
-    return this.serviceRepository.create(createServiceDto);
+    const date = new Date().toISOString();
+
+    return this.serviceRepository.save({
+      ...createServiceDto,
+      createdAt: date,
+      updatedAt: date,
+    });
   }
 
   findAll() {
-    // const builder = this.serviceRepository.createQueryBuilder
     return this.serviceRepository.find({
       select: {
         title: true,

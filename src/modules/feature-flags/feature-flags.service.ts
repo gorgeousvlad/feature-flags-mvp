@@ -75,10 +75,21 @@ export class FeatureFlagsService {
       list,
       count,
     };
-    //Query Builder Example
   }
 
   async findOne(id: number) {
+    // Query builder example
+    // const result = await this.dataSource
+    //   .getRepository(FeatureFlag)
+    //   .createQueryBuilder('feature_flag')
+    //   .leftJoinAndSelect(
+    //     'feature_flag.services',
+    //     'services',
+    //     'services.published = true',
+    //   )
+    //   .where('feature_flag.id = :id', { id })
+    //   .getOne();
+
     const result = await this.featureFlagRepository.findOne({
       where: {
         id,
@@ -130,25 +141,5 @@ export class FeatureFlagsService {
     );
 
     return result;
-    // if (serviceSlugs) {
-    //   const currentFlag = await this.featureFlagRepository.findOne({
-    //     where: { id },
-    //     relations: { services: true },
-    //   });
-
-    //   const services = await this.dataSource.getRepository(Service).find({
-    //     where: {
-    //       slug: In(serviceSlugs),
-    //     },
-    //   });
-
-    //   await this.featureFlagRepository
-    //     .createQueryBuilder()
-    //     .relation(FeatureFlag, 'services')
-    //     .of(currentFlag)
-    //     .addAndRemove(services, currentFlag.services);
-    // }
-
-    // return this.featureFlagRepository.update(id, resultData);
   }
 }
