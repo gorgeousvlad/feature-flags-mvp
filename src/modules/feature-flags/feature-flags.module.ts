@@ -11,8 +11,15 @@ import { ServicesModule } from './services/services/services.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'db',
+      // for quick local test with sqlite use this:
+      // type: 'sqlite',
+      // database: 'db',
+      type: 'postgres',
+      host: '127.0.0.1',
+      port: 5432,
+      username: 'postgres',
+      password: 'mysecretpassword',
+      database: 'postgres',
       synchronize: true,
       autoLoadEntities: true,
     }),
